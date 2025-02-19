@@ -2,22 +2,20 @@ import React from "react";
 import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "react-hot-toast";
-import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
-// import MyProfile from './pages/MyProfile.tsx';
-import CreatePost from "./pages/CreatePost";
-import PostDetail from "./pages/PostDetail";
-import NotFound from "./pages/NotFound";
-import { AuthProvider } from "./context/AuthContext";
+import Navbar from "./components/Navbar.js";
+import Home from "./pages/Home.js";
+import Login from "./pages/Login.js";
+import Register from "./pages/Register.js";
+import Profile from "./pages/Profile.js";
+import CreatePost from "./pages/CreatePost.js";
+import PostDetail from "./pages/PostDetail.js";
+import NotFound from "./pages/NotFound.js";
+import { AuthProvider } from "./context/AuthContext.js";
 
 const queryClient = new QueryClient();
 
-// ✅ Inline Protected Route component
 const ProtectedRoute = () => {
-  const token = localStorage.getItem("token"); // Check if user is logged in
+  const token = localStorage.getItem("token"); 
   return token ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
@@ -36,7 +34,6 @@ function App() {
                 <Route path="/profile/:username" element={<Profile />} />
                 <Route path="/posts/:id" element={<PostDetail />} />
 
-                {/* ✅ Protect these routes */}
                 <Route element={<ProtectedRoute />}>
                   <Route path="/create-post" element={<CreatePost />} />
                 {/* <Route path="/profile/me" element={<MyProfile/>} /> */}
