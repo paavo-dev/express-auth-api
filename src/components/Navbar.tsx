@@ -1,7 +1,7 @@
-import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
-import { LogOut, PlusSquare, User } from 'lucide-react';
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { LogOut, PlusSquare } from "lucide-react";
 
 const Navbar = () => {
   const { user, logout } = useAuth();
@@ -9,7 +9,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
   return (
@@ -17,9 +17,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <Link to="/" className="text-xl font-bold text-gray-800">
-            memehub     
+            memehub
           </Link>
-          
+
           <div className="flex items-center gap-4">
             {user ? (
               <>
@@ -29,13 +29,6 @@ const Navbar = () => {
                 >
                   <PlusSquare size={20} />
                   <span>Create Post</span>
-                </Link>
-                <Link
-                  to="/profile"
-                  className="flex items-center gap-2 text-gray-600 hover:text-gray-800"
-                >
-                  <User size={20} />
-                  <span>{user.username}</span>
                 </Link>
                 <button
                   onClick={handleLogout}
@@ -47,10 +40,7 @@ const Navbar = () => {
               </>
             ) : (
               <>
-                <Link
-                  to="/login"
-                  className="text-gray-600 hover:text-gray-800"
-                >
+                <Link to="/login" className="text-gray-600 hover:text-gray-800">
                   Login
                 </Link>
                 <Link
